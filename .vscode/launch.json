@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Travel_Planner-Mahendra",
+            "cwd": "Travel_Planner-Mahendra",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Travel_Planner-Mahendra (profile mode)",
+            "cwd": "Travel_Planner-Mahendra",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "Travel_Planner-Mahendra (release mode)",
+            "cwd": "Travel_Planner-Mahendra",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
