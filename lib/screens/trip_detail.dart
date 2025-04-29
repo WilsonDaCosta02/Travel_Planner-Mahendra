@@ -22,7 +22,9 @@ class _TripDetailState extends State<TripDetail> {
   }
 
   Future<void> addDestinationToTrip() async {
-    final url = Uri.parse('http://192.168.1.95:3000/trips/${widget.trip['_id']}');
+    final url = Uri.parse(
+      'http://40.40.5.15:3000/trips/${widget.trip['_id']}',
+    );
     final response = await http.put(
       url,
       headers: {'Content-Type': 'application/json'},

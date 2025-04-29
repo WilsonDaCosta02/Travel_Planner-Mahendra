@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
 
   Future<void> loginUser() async {
     final url = Uri.parse(
-      'http://192.168.1.95:3000/users/login',
+      'http://40.40.5.15:3000/users/login',
     ); // ganti IP jika test di HP
     final response = await http.post(
       url,
@@ -357,13 +357,9 @@ class _LoginState extends State<Login> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder:
-                                                    (context) =>
-                                                        const Register(),
-                                              ),
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) => Register(),
                                             );
                                           },
                                           child: Text(

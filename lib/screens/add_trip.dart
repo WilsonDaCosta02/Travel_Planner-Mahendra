@@ -15,7 +15,7 @@ class _AddTripState extends State<AddTrip> {
   final TextEditingController endDateController = TextEditingController();
 
   Future<void> submitTrip() async {
-    final url = Uri.parse('http://192.168.1.95:3000/trips');
+    final url = Uri.parse('http://40.40.5.15:3000/trips');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},

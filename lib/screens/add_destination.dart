@@ -14,6 +14,52 @@ class _AddDestinationState extends State<AddDestination> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
 
+  Future<void> _selectDateRange() async {
+    final DateTime now = DateTime.now();
+    final DateTimeRange? picked = await showDateRangePicker(
+      context: context,
+      firstDate: DateTime(now.year - 5),
+      lastDate: DateTime(now.year + 5),
+      initialDateRange: DateTimeRange(
+        start: now,
+        end: now.add(Duration(days: 3)),
+      ),
+    );
+
+    if (picked != null) {
+      final start = picked.start;
+      final end = picked.end;
+
+      // Format: DD Month YYYY - DD Month YYYY
+      final formatted = '${_formatDate(start)} - ${_formatDate(end)}';
+      setState(() {
+        dateController.text = formatted;
+      });
+    }
+  }
+
+  String _formatDate(DateTime date) {
+    return '${date.day.toString().padLeft(2, '0')} ${_monthName(date.month)} ${date.year}';
+  }
+
+  String _monthName(int month) {
+    const months = [
+      'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember',
+    ];
+    return months[month - 1];
+  }
+
   Future<void> addDestination() async {
     final name = nameController.text;
     final date = dateController.text;
@@ -30,7 +76,7 @@ class _AddDestinationState extends State<AddDestination> {
       return;
     }
 
-    final url = Uri.parse('http://192.168.1.95:3000/destinations');
+    final url = Uri.parse('http://40.40.5.15:3000/destinations');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -100,13 +146,16 @@ class _AddDestinationState extends State<AddDestination> {
               ),
               child: TextField(
                 controller: dateController,
+                readOnly: true,
                 maxLines: 2,
+                onTap: _selectDateRange,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Tanggal Trip\n(DD Month YYYY - DD Month YYYY)',
                   hintStyle: GoogleFonts.poppins(
                     color: const Color(0xFFB0B0B0),
                   ),
+                  suffixIcon: Icon(Icons.calendar_today),
                 ),
                 style: GoogleFonts.poppins(),
               ),

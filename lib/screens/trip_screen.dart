@@ -21,7 +21,7 @@ class _TripScreenState extends State<TripScreen> {
   }
 
   Future<void> fetchTrips() async {
-    final url = Uri.parse('http://192.168.1.95:3000/trips');
+    final url = Uri.parse('http://40.40.5.15:3000/trips');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       setState(() {

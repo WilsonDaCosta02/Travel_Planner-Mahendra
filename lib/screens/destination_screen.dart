@@ -21,7 +21,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
   }
 
   Future<void> fetchDestinations() async {
-    final url = Uri.parse('http://192.168.1.95:3000/destinations');
+    final url = Uri.parse('http://192.168.18.191:3000/destinations');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       setState(() {
@@ -35,7 +35,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
   }
 
   Future<void> deleteDestination(String id) async {
-    final url = Uri.parse('http://localhost:3000/destinations/$id');
+    final url = Uri.parse('http://40.40.5.15:3000/destinations/$id');
     final response = await http.delete(url);
     if (response.statusCode == 200) {
       fetchDestinations();
@@ -47,7 +47,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
   }
 
   Future<void> editDestination(String id, String name, String date) async {
-    final url = Uri.parse('http://localhost:3000/destinations/$id');
+    final url = Uri.parse('http://40.40.5.15:3000/destinations/$id');
     final response = await http.put(
       url,
       headers: {'Content-Type': 'application/json'},
