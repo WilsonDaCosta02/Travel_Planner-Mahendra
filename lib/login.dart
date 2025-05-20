@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
 
   Future<void> loginUser() async {
     final url = Uri.parse(
-      'http://40.40.9.50:3000/users/login',
+      'http://40.40.9.49:3000/users/login',
     ); // ganti IP jika test di HP
     final response = await http.post(
       url,
